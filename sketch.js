@@ -1,40 +1,42 @@
-var car, wall;
-var speed, weight;
-
 function setup() {
-  createCanvas(1600,400);
-speed=random(10,50)
-weight=random(600,1000)
-
- car=createSprite(50, 200, 50, 50);
-car.velocityX = speed;
-
-wall=createSprite(1500,200,60,height/2);
-wall.shapeColor=(80,80,80);
-
-}
-
-function draw() {
-  background(255,255,255);  
-
-if(wall.x-car.x < (car.width+wall.width)/2)
-{
-  car.velocityX=0;
-  var deformation=0.5 * weight * speed* speed/22509;
-  if(deformation>180)
-  {
-    car.shapeColor=color(230,230,0);
-  }
-
-  
-  if(deformation<180 && deformation>100) {
-  car.shapeColor=color(30,30,0); 
-}
-  
-  if(deformation<100)
-  {
-    car.shapeColor=color(100,355,100);
-  }
-  }
-  drawSprites();
-}
+      createCanvas(450,450);
+      angleMode(DEGREES);
+      }
+      
+      function draw() {
+      
+      background(127);
+      
+      translate(200,200)
+      rotate (-90);
+      
+      let hr = hour();
+      let mn = minute();
+      let sc = second();
+      
+strokeWeight(8);
+stroke("blue");
+let end = map(sc,0,60,0,360);
+arc(0,0,300,300,0,end);
+stroke("yellow");
+let end2 = map(mn,0,60,0,360);
+arc(0,0,280,280,0,end2);
+stroke("white");
+let end3 = map(hr%12,0,12,-0,360);
+arc(0,0,260,260,0,end3);      
+push();
+rotate(end);
+stroke("blue");
+line(0,0,100,0);
+pop();
+push();
+rotate(end2);
+stroke("yellow");
+line(0,0,75,0);
+pop();
+push();
+rotate(end3);
+stroke("white");
+line(0,0,50,0);
+pop();
+	}
